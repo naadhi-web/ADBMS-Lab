@@ -1,0 +1,595 @@
+[mca@localhost ~]$ mySQL 24mca36
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 32
+Server version: 8.0.36 Source distribution
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use 24mca36
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_24mca36 |
++-------------------+
+| bookissues        |
+| books             |
+| departments       |
+| student           |
+| students          |
++-------------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from student;
++------------+----------+------+-------+--------+
+| rollnumber | name     | age  | marks | height |
++------------+----------+------+-------+--------+
+| 22         | jalala   |   25 | 69.70 |   NULL |
+| 39         | njmath   |   25 | 65.70 |   NULL |
+| 58         | swafwana |   25 | 67.80 |   NULL |
+| 60         | yusra    |   25 | 68.90 |   NULL |
+| 61         | shimna   |   25 | 56.90 |   NULL |
++------------+----------+------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> desc students;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| studentid | int          | NO   | PRI | NULL    |       |
+| name      | varchar(100) | NO   |     | NULL    |       |
+| age       | int          | YES  |     | NULL    |       |
+| dno       | int          | YES  | MUL | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into students values(101,'Ansil P',21,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students values(102,Jalala P V,23,1),(103,Naadhi,20,1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'P V,23,1),(103,Naadhi,20,1)' at line 1
+mysql> insert into students values(102,Jalala P V,23,1),(103,'Naadhi',20,1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'P V,23,1),(103,'Naadhi',20,1)' at line 1
+mysql> insert into students values(102,'Jalala P V',23,1),(103,'Naadhi',20,1);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into students values(104,'Najma  V',23,1),(105,'Naadhi',23,1);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into students values(106,'Swafvan C',21,2),(107,'Yusra P',23,2),(108,'Muhsina T P',21,1),(109,'Jasir R',19,3),(110,'Ashik C',18,3),(111,'Sayana T',23,2);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`24mca36`.`students`, CONSTRAINT `students_fkey_dno` FOREIGN KEY (`dno`) REFERENCES `departments` (`dno`))
+mysql> insert into departments values(2,'BCA'),(3,'BTech');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into students values(106,'Swafvan C',21,2),(107,'Yusra P',23,2),(108,'Muhsina T P',21,1),(109,'Jasir R',19,3),(110,'Ashik C',18,3),(111,'Sayana T',23,2);
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from bookissues;
+Empty set (0.00 sec)
+
+mysql> select * from books;;
++--------+---------------------------+---------------+-------+
+| bookid | title                     | author        | price |
++--------+---------------------------+---------------+-------+
+|      1 | Database Systems          | Ramez Elmasri |   550 |
+|      2 | Operating System Concepts | Silberschatz  |   770 |
+|      3 | Wing of fire              | Abdul kalam   |   250 |
+|      4 | Algorithms                | Cormen        |   110 |
++--------+---------------------------+---------------+-------+
+4 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> insert into books values(5,'Ignited Minds','Abdul kalam',350);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into books values(6,'THE Alchemist'
+[1]+  Stopped                 mySQL 24mca36
+[mca@localhost ~]$ mySQL 24mca36
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 88
+Server version: 8.0.36 Source distribution
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use 24mca36
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> insert into books values(6.'The Alchemist','Paulo coelho',370);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''The Alchemist','Paulo coelho',370)' at line 1
+mysql> insert into books values(6,'The Alchemist','Paulo coelho',370);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into books values(7,'Dary of Young Girl','Ann',480),(8,'Discovery
+of India','Nehru',570),(9,'Eleven Minutes','Paulo coelho',440);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into books values(10,'My Journey','Abdul kalam',650);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from bookissues;
+Empty set (0.00 sec)
+
+mysql> insert into bookissues values(1,102,'2025-02-13','2025-02-21',0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bookissues values(2,103,'2025-02-14','2025-02-23',0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bookissues values(1,111,'2025-02-15','2025-02-24',0);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into bookissues values(3,103,'2025-02-15','2025-02-24',0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bookissues values(6,109,'2025-02-09','2025-02-16',0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bookissues values(5,109,'2025-02-10','2025-02-17',10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into bookissues values(9,106,'2025-02-11','2025-02-21',25);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into bookissues values(9,106,'2025-02-15','2025-02-22',0);
+ERROR 1062 (23000): Duplicate entry '9-106' for key 'bookissues.PRIMARY'
+mysql> insert into bookissues values(7,106,'2025-02-15','2025-02-22',0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bookissues values(4,106,'2025-02-15','2025-02-22',0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into bookissues values(4,110,'2025-02-17','2025-02-27',0);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from bookissues;
++--------+-----------+------------+-------------+-------+
+| bookid | studentid | issue_date | return_date | fine  |
++--------+-----------+------------+-------------+-------+
+|      1 |       102 | 2025-02-13 | 2025-02-21  |  0.00 |
+|      1 |       111 | 2025-02-15 | 2025-02-24  |  0.00 |
+|      2 |       103 | 2025-02-14 | 2025-02-23  |  0.00 |
+|      3 |       103 | 2025-02-15 | 2025-02-24  |  0.00 |
+|      4 |       106 | 2025-02-15 | 2025-02-22  |  0.00 |
+|      4 |       110 | 2025-02-17 | 2025-02-27  |  0.00 |
+|      5 |       109 | 2025-02-10 | 2025-02-17  | 10.00 |
+|      6 |       109 | 2025-02-09 | 2025-02-16  |  0.00 |
+|      7 |       106 | 2025-02-15 | 2025-02-22  |  0.00 |
+|      9 |       106 | 2025-02-11 | 2025-02-21  | 25.00 |
++--------+-----------+------------+-------------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select * from students group by dno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column '24mca36.students.studentid' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select count (*) from students group by dno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from students group by dno' at line 1
+mysql> select count(*) from students group by dno;
++----------+
+| count(*) |
++----------+
+|        6 |
+|        3 |
+|        2 |
++----------+
+3 rows in set (0.01 sec)
+
+mysql> select count(*) as total number of student from students group by dno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number of student from students group by dno' at line 1
+mysql> select count(*) as 'total number of student' from students group by dno;
++-------------------------+
+| total number of student |
++-------------------------+
+|                       6 |
+|                       3 |
+|                       2 |
++-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> select count(*) as 'total students' from students groub by studentid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by studentid' at line 1
+mysql> select count(*) as 'total students' from students group by studentid;
++----------------+
+| total students |
++----------------+
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
++----------------+
+11 rows in set (0.00 sec)
+
+mysql> select sum(*) as 'total students' from students group by studentid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) as 'total students' from students group by studentid' at line 1
+mysql> select sum() as 'total students' from students group by studentid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') as 'total students' from students group by studentid' at line 1
+mysql> select count(*) as 'total students' from students group by name;
++----------------+
+| total students |
++----------------+
+|              1 |
+|              1 |
+|              2 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
++----------------+
+10 rows in set (0.00 sec)
+
+mysql> select count(*) as 'total students' from students group by dno;
++----------------+
+| total students |
++----------------+
+|              6 |
+|              3 |
+|              2 |
++----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from students;
++-----------+-------------+------+------+
+| studentid | name        | age  | dno  |
++-----------+-------------+------+------+
+|       101 | Ansil P     |   21 |    1 |
+|       102 | Jalala P V  |   23 |    1 |
+|       103 | Naadhi      |   20 |    1 |
+|       104 | Najma  V    |   23 |    1 |
+|       105 | Naadhi      |   23 |    1 |
+|       106 | Swafvan C   |   21 |    2 |
+|       107 | Yusra P     |   23 |    2 |
+|       108 | Muhsina T P |   21 |    1 |
+|       109 | Jasir R     |   19 |    3 |
+|       110 | Ashik C     |   18 |    3 |
+|       111 | Sayana T    |   23 |    2 |
++-----------+-------------+------+------+
+11 rows in set (0.00 sec)
+
+mysql> select sum(studentid) from students;
++----------------+
+| sum(studentid) |
++----------------+
+|           1166 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(name) from students;
++-----------+
+| sum(name) |
++-----------+
+|         0 |
++-----------+
+1 row in set, 11 warnings (0.00 sec)
+
+mysql> select sum(dno) from students;
++----------+
+| sum(dno) |
++----------+
+|       18 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select sum() from students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from students' at line 1
+mysql> select count(studentid) from students;
++------------------+
+| count(studentid) |
++------------------+
+|               11 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(bookid) from books;
++---------------+
+| count(bookid) |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(price) from books;
++------------+
+| avg(price) |
++------------+
+|   454.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(price) from books;
++------------+
+| min(price) |
++------------+
+|        110 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(price), max(price) from books;
++------------+------------+
+| min(price) | max(price) |
++------------+------------+
+|        110 |        770 |
++------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select count(bookid) from bookissues;
++---------------+
+| count(bookid) |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select * nfrom books;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nfrom books' at line 1
+mysql> select * from books;
++--------+---------------------------+---------------+-------+
+| bookid | title                     | author        | price |
++--------+---------------------------+---------------+-------+
+|      1 | Database Systems          | Ramez Elmasri |   550 |
+|      2 | Operating System Concepts | Silberschatz  |   770 |
+|      3 | Wing of fire              | Abdul kalam   |   250 |
+|      4 | Algorithms                | Cormen        |   110 |
+|      5 | Ignited Minds             | Abdul kalam   |   350 |
+|      6 | The Alchemist             | Paulo coelho  |   370 |
+|      7 | Dary of Young Girl        | Ann           |   480 |
+|      8 | Discovery of India        | Nehru         |   570 |
+|      9 | Eleven Minutes            | Paulo coelho  |   440 |
+|     10 | My Journey                | Abdul kalam   |   650 |
++--------+---------------------------+---------------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select * from bookissues;
++--------+-----------+------------+-------------+-------+
+| bookid | studentid | issue_date | return_date | fine  |
++--------+-----------+------------+-------------+-------+
+|      1 |       102 | 2025-02-13 | 2025-02-21  |  0.00 |
+|      1 |       111 | 2025-02-15 | 2025-02-24  |  0.00 |
+|      2 |       103 | 2025-02-14 | 2025-02-23  |  0.00 |
+|      3 |       103 | 2025-02-15 | 2025-02-24  |  0.00 |
+|      4 |       106 | 2025-02-15 | 2025-02-22  |  0.00 |
+|      4 |       110 | 2025-02-17 | 2025-02-27  |  0.00 |
+|      5 |       109 | 2025-02-10 | 2025-02-17  | 10.00 |
+|      6 |       109 | 2025-02-09 | 2025-02-16  |  0.00 |
+|      7 |       106 | 2025-02-15 | 2025-02-22  |  0.00 |
+|      9 |       106 | 2025-02-11 | 2025-02-21  | 25.00 |
++--------+-----------+------------+-------------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select count(bookissue.bookid) from bookissues;
+ERROR 1054 (42S22): Unknown column 'bookissue.bookid' in 'field list'
+mysql> select count(bookissues.bookid) from bookissues;
++--------------------------+
+| count(bookissues.bookid) |
++--------------------------+
+|                       10 |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(bookid) from bookissues group by bookid;
++---------------+
+| count(bookid) |
++---------------+
+|             2 |
+|             1 |
+|             1 |
+|             2 |
+|             1 |
+|             1 |
+|             1 |
+|             1 |
++---------------+
+8 rows in set (0.00 sec)
+
+mysql> select count(*) from bookissues groupby studentid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'studentid' at line 1
+mysql> select count(*) from bookissues group by studentid;
++----------+
+| count(*) |
++----------+
+|        1 |
+|        2 |
+|        3 |
+|        2 |
+|        1 |
+|        1 |
++----------+
+6 rows in set (0.00 sec)
+
+mysql> select studentid,count(*) from bookissues group by studentid;
++-----------+----------+
+| studentid | count(*) |
++-----------+----------+
+|       102 |        1 |
+|       103 |        2 |
+|       106 |        3 |
+|       109 |        2 |
+|       110 |        1 |
+|       111 |        1 |
++-----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from bookissues;
++--------+-----------+------------+-------------+-------+
+| bookid | studentid | issue_date | return_date | fine  |
++--------+-----------+------------+-------------+-------+
+|      1 |       102 | 2025-02-13 | 2025-02-21  |  0.00 |
+|      1 |       111 | 2025-02-15 | 2025-02-24  |  0.00 |
+|      2 |       103 | 2025-02-14 | 2025-02-23  |  0.00 |
+|      3 |       103 | 2025-02-15 | 2025-02-24  |  0.00 |
+|      4 |       106 | 2025-02-15 | 2025-02-22  |  0.00 |
+|      4 |       110 | 2025-02-17 | 2025-02-27  |  0.00 |
+|      5 |       109 | 2025-02-10 | 2025-02-17  | 10.00 |
+|      6 |       109 | 2025-02-09 | 2025-02-16  |  0.00 |
+|      7 |       106 | 2025-02-15 | 2025-02-22  |  0.00 |
+|      9 |       106 | 2025-02-11 | 2025-02-21  | 25.00 |
++--------+-----------+------------+-------------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select name,count(*) as total_no_books from bookissues group by studentid
+;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select name,count(*) as total_no_books from bookissues,students group by
+studentid;
+ERROR 1052 (23000): Column 'studentid' in group statement is ambiguous
+mysql> select name,count(*) as total_no_books from bookissues,students group by
+bookissues.studentid;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column '24mca36.students.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select name,count(*) as total_no_books from bookissues,students group by
+bookissues.studentid;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column '24mca36.students.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select studentid,count(*) as total_no_books from bookissues group by bookissu
++-----------+----------------+
+| studentid | total_no_books |
++-----------+----------------+
+|       102 |              1 |
+|       103 |              2 |
+|       106 |              3 |
+|       109 |              2 |
+|       110 |              1 |
+|       111 |              1 |
++-----------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select name from students,count(*) as total_no_books from bookissues grou
+p by book
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(*) as total_no_books from bookissues group by bookissues.studentid' at line 1
+mysql> select name from students,count(*) as total_no_books from bookissues group by studentid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(*) as total_no_books from bookissues group by studentid' at line 1
+mysql> select count(distinct bookid) from bookissues;
++------------------------+
+| count(distinct bookid) |
++------------------------+
+|                      8 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select studentid,count(*) as total_no_books from bookissues group by studentid;
++-----------+----------------+
+| studentid | total_no_books |
++-----------+----------------+
+|       102 |              1 |
+|       103 |              2 |
+|       106 |              3 |
+|       109 |              2 |
+|       110 |              1 |
+|       111 |              1 |
++-----------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select max(price) as highest_price fromm books group by title;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fromm books group by title' at line 1
+mysql> select max(price) as highest_price from books group by title;
++---------------+
+| highest_price |
++---------------+
+|           550 |
+|           770 |
+|           250 |
+|           110 |
+|           350 |
+|           370 |
+|           480 |
+|           570 |
+|           440 |
+|           650 |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> select max(price) as highest_price from books group by books;
+ERROR 1054 (42S22): Unknown column 'books' in 'group statement'
+mysql> select max(price) as highest_price from books group by price;
++---------------+
+| highest_price |
++---------------+
+|           550 |
+|           770 |
+|           250 |
+|           110 |
+|           350 |
+|           370 |
+|           480 |
+|           570 |
+|           440 |
+|           650 |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> select max(price) as highest_price from books;
++---------------+
+| highest_price |
++---------------+
+|           770 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select max(price) as highest_price from books group by title;
++---------------+
+| highest_price |
++---------------+
+|           550 |
+|           770 |
+|           250 |
+|           110 |
+|           350 |
+|           370 |
+|           480 |
+|           570 |
+|           440 |
+|           650 |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> select min(price) as highest_price from books group by title;
++---------------+
+| highest_price |
++---------------+
+|           550 |
+|           770 |
+|           250 |
+|           110 |
+|           350 |
+|           370 |
+|           480 |
+|           570 |
+|           440 |
+|           650 |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> 
